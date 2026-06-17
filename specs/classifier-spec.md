@@ -65,9 +65,9 @@ label was applied — title and description are both useful; other fields
 **Example block sketch (write one concrete example):**
 
 ```
-Title: {title}
-Description: {description}
-Label: {label}
+Title: Marine Biologist Dr. Amara Diallo on What Coral Bleaching Actually Looks Like
+Description: Dr. Amara Diallo has spent twenty years diving on coral reefs from the Great Barrier Reef to the Maldives. In this conversation, she describes what a bleaching event looks like underwater in real time, explains the biology of why coral bleaches and under what conditions it can recover, and pushes back on narratives she thinks are both too optimistic and too catastrophizing. We also talk about what it's like to watch a place you've studied for years die in front of you. A vivid, sometimes difficult conversation.
+Label: interview
 ```
 
 ---
@@ -95,6 +95,9 @@ the format below:" followed by the output format you chose.
 makes parsing reliable? Think about: a single label on its own line?
 A structured format like "Label: X / Reasoning: Y"? JSON?
 What are the tradeoffs?]
+
+Answer (Easier to parse)
+Answer + Reasoning (Structured)
 ```
 
 ---
@@ -104,6 +107,9 @@ What are the tradeoffs?]
 ```
 [blank — what if labeled_examples is empty? What if the description is very
 short? How does your prompt handle these?]
+
+Labeled_examples is empty -> Check before sending prompt request to LLM
+Description is short -> Infer based on context given by title and the description --> Always produce a label as output
 ```
 
 ---
@@ -171,6 +177,8 @@ This depends on the output format you chose in build_few_shot_prompt.]
 ```
 [blank — what do you do if the LLM returns a label that isn't in VALID_LABELS?
 What should label be set to?]
+
+If not VALID_LABEL --> Set label to None
 ```
 
 ---
@@ -181,6 +189,8 @@ What should label be set to?]
 [blank — what could go wrong? (Network error? Unparseable response?)
 What should the function return if something fails?
 Hint: the evaluation loop runs 20 calls — one bad response shouldn't crash everything.]
+
+Having a message that states the call was not able to completed
 ```
 
 ---

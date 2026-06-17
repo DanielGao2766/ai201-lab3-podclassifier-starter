@@ -46,6 +46,9 @@ Returns the fraction of predictions that exactly match the ground truth.
 ```
 [blank — write out the accuracy formula in plain English.
  What counts as "correct"? What do you divide by?]
+
+It is "correct" if it matches the label within the test data
+Create both a total accuracy by dividing based on the amount of different inputs and a per-class accuracy by dividing based on the number of other inputs with the same label answer within the test data. 
 ```
 
 ---
@@ -54,9 +57,10 @@ Returns the fraction of predictions that exactly match the ground truth.
 
 ```
 [blank — describe the steps your code will take.
- 1. ...
- 2. ...
- 3. ...]
+ 1. Take in the test_episodes.json file
+ 2. Run the cycle for each item in the test_episodes.json
+ 3. Based on the output, calculate the metrics based on the block above with both total accuracy and per-class accuracy
+ ]
 ```
 
 ---
@@ -65,6 +69,7 @@ Returns the fraction of predictions that exactly match the ground truth.
 
 ```
 [blank — what should the function return? Why?]
+Return label as "unknown"
 ```
 
 ---
