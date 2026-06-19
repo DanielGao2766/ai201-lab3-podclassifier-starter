@@ -120,6 +120,8 @@ A `dict` keyed by label. Each value is a dict with three keys:
 ```
 [blank — be precise. When does an episode count as correctly classified
  for the "interview" class, for example?]
+
+ When the label for the episode is from the interview class. 
 ```
 
 ---
@@ -128,6 +130,8 @@ A `dict` keyed by label. Each value is a dict with three keys:
 
 ```
 [blank — is "total" the total number of predictions, or something more specific?]
+
+Total is number of episodes with this ground-truth label
 ```
 
 ---
@@ -150,7 +154,9 @@ A `dict` keyed by label. Each value is a dict with three keys:
 ```
 [blank — what should accuracy be set to? Why?
  Hint: look at the docstring in evaluate.py.]
-```
+
+ It should be set to 0 since we do the calculation of "correct"/"total" and the resulting calculation would be 0
+ ```
 
 ---
 
@@ -164,10 +170,10 @@ ground_truth = ["interview", "solo",      "solo", "panel", "narrative"]
 
 label       correct  total  accuracy
 ----------  -------  -----  --------
-interview   [blank]  [blank]  [blank]
-solo        [blank]  [blank]  [blank]
-panel       [blank]  [blank]  [blank]
-narrative   [blank]  [blank]  [blank]
+interview   [1]      [1]      [1]
+solo        [1]      [2]      [.5]
+panel       [1]      [1]      [1]
+narrative   [0]      [1]      [0]
 ```
 
 ---
